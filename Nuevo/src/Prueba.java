@@ -1,4 +1,6 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -11,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author usuario
  */
 public class Prueba extends javax.swing.JFrame {
-
+    CargaBase a= new CargaBase();
     /**
      * Creates new form Prueba
      */
@@ -51,7 +53,6 @@ public class Prueba extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña");
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -153,21 +154,31 @@ public class Prueba extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo invalido");
+            
+        } else {
 
             if (jTextField2.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Campo invalido");
+                
+            }else{
 
                 if (jPasswordField1.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Campo invalido");
                 }
-
+            
                 if (jTextField4.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Campo invalido");
 
                 }
 
+                try {
+                    a.readDataBase(jTextField1.getText(), jTextField2.getText(),jPasswordField1.getText() , jTextField4.getText());
+                } catch (Exception ex) {
+                    Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }//GEN-LAST:event_jButton1ActionPerformed
         }
+       
     }
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
@@ -221,3 +232,4 @@ public class Prueba extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
+
