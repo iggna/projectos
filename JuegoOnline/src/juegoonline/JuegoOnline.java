@@ -43,13 +43,13 @@ public class JuegoOnline {
             preparedStatement.executeUpdate();
 
             preparedStatement = connect
-                    .prepareStatement("SELECT Usuario ,email, FechaDeNacimiento, contrasena, from juegoonline.comments");
+                    .prepareStatement("SELECT * from juegoonline.comments");
             resultSet = preparedStatement.executeQuery();
             writeResultSet(resultSet);
 
             // Remove again the insert comment
             preparedStatement = connect
-            .prepareStatement("delete from juegoonline.comments where myuser= ? ; ");
+            .prepareStatement("delete from juegoonline.comments where Usuario= ? ; ");
             preparedStatement.setString(1, "Test");
             preparedStatement.executeUpdate();
 
