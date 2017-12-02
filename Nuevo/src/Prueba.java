@@ -1,6 +1,8 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /*
@@ -20,7 +22,14 @@ public class Prueba extends javax.swing.JFrame {
     public Prueba() {
         initComponents();
     }
+public static boolean CheckEmail (String email) {
+    Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
+        Matcher m = p.matcher(email);
+      
+ return m.matches();
 
+}
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,7 +166,8 @@ public class Prueba extends javax.swing.JFrame {
             
         } else {
 
-            if (jTextField2.getText().equals("")) {
+            if (CheckEmail(jTextField2.getText()))  {
+                
                 JOptionPane.showMessageDialog(null, "Campo invalido");
                 
             }else{
